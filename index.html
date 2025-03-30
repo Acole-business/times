@@ -71,30 +71,17 @@
         
         function generateSchedule() {
             scheduleBody.innerHTML = "";
-            let i = 0;
-            let timeSlotCount = 0;
-
-            // Loop until 1:00 PM (13:00)
-            while (baseTime.getHours() < 13) {
-                const startTime = new Date(baseTime.getTime() + timeSlotCount * 1800000); // 30 min interval
+            let currentTime = new Date(baseTime);
+            for (let i = 0; i < 9; i++) { // Repeat the names 3 times (3 names x 3 repetitions = 9 rows)
+                const nameIndex = i % names.length; // Cycle through the names
+                const startTime = new Date(currentTime);
                 const endTime = new Date(startTime.getTime() + 1800000); // 30 min duration
                 const startString = startTime.toLocaleTimeString();
                 const endString = endTime.toLocaleTimeString();
-
-                // Cycle through names for each time slot
-                const row = `<tr><td>${names[i % names.length]}</td><td>${startString}</td><td>${endString}</td></tr>`;
+                const row = `<tr><td>${names[nameIndex]}</td><td>${startString}</td><td>${endString}</td></tr>`;
                 scheduleBody.innerHTML += row;
-
-                // Increment counters
-                i++;
-                timeSlotCount++;
+                currentTime = new Date(endTime); // Move to the next time slot
             }
-        }
-        
-        function resetSchedule() {
-            baseTime = new Date();
-            baseTime.setHours(10, 0, 0, 0); // Reset to default 10:00 AM start time
-            generateSchedule();
         }
         
         generateSchedule();
