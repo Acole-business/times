@@ -73,7 +73,7 @@
         function generateSchedule() {
             scheduleBody.innerHTML = "";
             let currentTime = new Date(baseTime);
-            for (let i = 0; i < 9; i++) { // Repeat the names 3 times (3 names x 3 repetitions = 9 rows)
+            for (let i = 0; i < 6; i++) { // Repeat the names 3 times (3 names x 3 repetitions = 6 rows)
                 const nameIndex = i % names.length; // Cycle through the names
                 const startTime = new Date(currentTime);
                 const endTime = new Date(startTime.getTime() + 1800000); // 30 min duration
