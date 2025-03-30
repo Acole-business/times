@@ -68,12 +68,12 @@
         const names = ["Will & Jerry & Jackson", "Grace & Brennen", "Nate & Drew"];
         const scheduleBody = document.getElementById("scheduleBody");
         let baseTime = new Date();
-        baseTime.setHours(10, 10, 0, 0); // Set default start time to 10:00 AM
+        baseTime.setHours(11, 45, 0, 0); // Set default start time to 10:00 AM
         
         function generateSchedule() {
             scheduleBody.innerHTML = "";
             let currentTime = new Date(baseTime);
-            for (let i = 0; i < 6; i++) { // Repeat the names 3 times (3 names x 3 repetitions = 6 rows)
+            for (let i = 0; i < 3; i++) { // Repeat the names 3 times (3 names x 3 repetitions = 6 rows)
                 const nameIndex = i % names.length; // Cycle through the names
                 const startTime = new Date(currentTime);
                 const endTime = new Date(startTime.getTime() + 1800000); // 30 min duration
