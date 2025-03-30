@@ -74,6 +74,7 @@
             scheduleBody.innerHTML = "";
             for (let i = 0; i < names.length; i++) {
                 const startTime = new Date(baseTime.getTime() + i * 1800000); // 30 min interval
+                if (startTime.getHours() >= 13) break; // Stop generating times after 1:00 PM
                 const endTime = new Date(startTime.getTime() + 1800000); // 30 min duration
                 const startString = startTime.toLocaleTimeString();
                 const endString = endTime.toLocaleTimeString();
@@ -84,7 +85,7 @@
         
         function resetSchedule() {
             baseTime = new Date();
-            baseTime.setHours(9, 0, 0, 0); // Reset to default 9:00 AM start time
+            baseTime.setHours(10, 0, 0, 0); // Reset to default 10:00 AM start time
             generateSchedule();
         }
         
